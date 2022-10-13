@@ -200,7 +200,7 @@ public class ARPLayer implements BaseLayer {
     	// ARP 요청의 Target이 내가 Proxy해주는 호스트들인가?
     	for(String[] anEntry : this.proxyTable) {
     		result = true;
-    		byte[] comp = this.IPStringToByte(anEntry[0]);
+    		byte[] comp = this.IPStringToByte(anEntry[1]);
     		for(int i = 0; i < 4; i++) {
     			if (comp[i] != bytes[i+24]) {
     				result = false;
@@ -209,7 +209,7 @@ public class ARPLayer implements BaseLayer {
     		}
     		
     		if(result) {
-    			return this.MacStringToByte(anEntry[1]);
+    			return this.MacStringToByte(anEntry[2]);
     		}
     	}
     	
